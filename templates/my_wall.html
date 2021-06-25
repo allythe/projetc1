@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} my_words {% endblock %}
+
+
+{% block body %}
+    <h1 style="color:white" class = "container"> my_words </h1>
+
+    <div class ="container">
+         <form action="{{ url_for('my_wall') }}" method="post">
+             {% for el in my_words %}
+                <input  type='submit' style=" height: 180px; width:180px;  background:url({{el.img_url}}) top center; margin: 0.5% 0.5% 0.5% 0.5%; background-size:cover;background-repeat: no-repeat ;font-size:0px;" class="btn" name="word" value="{{el.eng}}" >
+             {% endfor %}
+         </form>
+    </div>
+
+    {% if h %}
+        <audio autoplay="autoplay" src="/static/music/{{h}}.mp3"></audio>
+    {% endif %}
+    {% endblock %}
+
+    {% block footer %}
+    {% if eng %}
+    <div  style="position:absolute; top:10%; right:5%">
+        <button class="btn" name="eng" style="background:aliceblue" value="{{eng.eng}}">{{eng.eng}}</button>
+        <br><button class="btn" name="add" style="background:wheat" value="{{eng.sp}}">{{eng.sp}}</button>
+        <form action="{{ url_for('my_wall')  }}" method="post">
+        <button class="btn" name="hear" style="background:aliceblue" value="{{eng.eng}}">hear</button>
+        <button class="btn" name="delete" style="background:aliceblue" value="{{eng.eng}}">-</button>
+        </form>
+    </div>
+    {% endif %}
+{% endblock %}

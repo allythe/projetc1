@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://i.pinimg.com/564x/91/60/4b/91604b8519d8d658354cd7ccfe78dc2d.jpg" type="image/x-icon">
+    <title>Reg</title>
+    <link rel = stylesheet href = "{{ url_for('static', filename = 'css/main.css/') }}">
+    <link rel = stylesheet href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body class="container text-center"  style="background: url(https://images.wallpaperscraft.ru/image/rastenie_listia_stebli_211251_1920x1080.jpg); background-size: 100%;">
+    <div class="my-sm-4"><img  width="100" /></div>
+    <div class=" ml-2  my-sm-2 ">
+    <h1 style="color:white" class="center-block ">Register page</h1>>
+    </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="btn-info col-sm-5 my-sm-5 container center-block" class=flashes >
+                  {% for message in messages %}
+                    <ul style="color:white" class="center-block">{{message}}</ul>
+                  {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+    <div class=" container  center-block col-md-5">
+      <form method = "POST">
+            <div class="my-sm-2 form-floating ">
+                <input type="email" class="form-control" id="floatingInput" name="login" placeholder="name@example.com">
+                <label for="floatingInput"></label>
+            </div>
+            <div class="my-sm-2 form-floating">
+              <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+              <label for="floatingPassword"></label>
+            </div>
+              <div class="my-sm-2 form-floating">
+              <input type="password" class="form-control" id="floatingPassword2" name="password2" placeholder="Password">
+              <label for="floatingPassword"></label>
+            </div>
+            <button class="my-sm-2 w-100  btn btn-info btn-lg btn-primary" type="submit" value="Register">Register</button>
+                  <td><a style="color:white" class=" ml-auto" href="{{ url_for('login_page') }}">Login</a></td>
+
+            <p class="mt-5 mb-3 text-muted">© 2021–2021</p>
+      </form>
+    </div>
+
+</body>
+</html>
+

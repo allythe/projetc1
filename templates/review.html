@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+{% block title %}review{% endblock %}
+{% block ground %}
+<body style="background: url(https://images.wallpaperscraft.ru/image/more_voda_riab_136929_1920x1080.jpg); background-size: 100%;">
+{% endblock %}
+
+{% block body %}
+    <style>
+        figure {
+        display: inline-block;
+        background: none;
+        padding: 10px;
+        margin: 1px 1em 0 0;
+        vertical-align: top;
+       }
+       figcaption {
+        text-align: center;
+       }
+    </style>
+
+    {% if el %}
+        <div class ="container">
+          <p style="text-align:center">
+                <img src="{{el.img_url}}" style = "background-size:cover;background-repeat: no-repeat;" width="600px" alt="">
+          </p>
+        </div>
+    {% endif %}
+
+    <div class = "container " >
+        {% if el %}
+            <form action="{{ url_for('review') }}" method = "post">
+                <p style="text-align:center">
+                    <input type="hidden" name="word" value="{{el.sp}}" >
+                    <input type="text" name="input" class="form-control"  style="background:wheat;"  placeholder="in spanish" autofocus="true" size="30">
+                </p>
+            </form>
+        {% else %}
+        {% if total != 0 %}
+            <h1 style="color:white">Your score is: {{score}} out of {{total}}</h1>
+        {% else %}
+             <h1 style="color:white">You have no words on your wall</h1>
+        {% endif %}
+
+        {% if wrong_ans %}
+            <div class="container">
+            <h3 style="color:white">U have {{total-score}} wrong answers</h3></div>
+                {% for el in wrong_ans %}
+                    <figure>
+                        <img src="{{wrong_ans[el]}}" style = "background-size:cover; background-repeat: no-repeat;" width="300px" alt="">
+                        <figcaption><br><h3 style="color:white"> {{el.lower()}} </h3></figcaption>
+                    </figure>
+                {% endfor %}
+        {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

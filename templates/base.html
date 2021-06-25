@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel = stylesheet href = "{{ url_for('static', filename = 'css/main.css/') }}">
+    <link rel = stylesheet href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script type="text/javascript" scr="/static/jquery.js"></script>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+{% block ground %}
+<body style="background: url(https://images.wallpaperscraft.ru/image/kirpichnaya_stena_tekstura_poverkhnost_111556_1920x1080.jpg); background-size: 100%;">
+{% endblock %}
+
+<header class="d-flex justify-content-center py-3">
+    <ul class="nav nav-pills">
+        <li class="nav-item" style="border-radius: 40%; background-color:#D1FCFB; margin: 0 5px 0 5px;"><a href="/" class="nav-link"><h style="color:black">wall</h></a></li>
+        <li class="nav-item" style="border-radius: 40%; background-color:#D1EEFC; margin: 0 5px 0 5px;  "><a href="{{  url_for('review') }}"" class="nav-link"><h style="color:black">review</h></a></li>
+        <li class="nav-item" style="border-radius: 40%; background-color:#D1DDFC; margin: 0 5px 0 5px; "><a href="/my_wall" class="nav-link"><h style="color:black">my_wall</h></a></li>
+        <li class="nav-item" style="border-radius: 40%; background-color:#DFD1FC; font-color:black; margin: 0 5px 0 5px;" ><a href="/logout" class="nav-link activate"><h style="color:black">logout</h></a></li>
+    </ul>
+</header>
+
+{% block body %}
+{% endblock %}
+
+    <div style="margin: 3% 3% 3% 3%">
+      {% block footer %}
+      {% endblock %}
+    </div>
+
+</body>
+</html>

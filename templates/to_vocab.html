@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ {{name[3:]}}
+{% endblock %}
+
+{% block ground %}
+<body style="background: url(https://images.wallpaperscraft.ru/image/skrapbuking_bumaga_tekstura_133512_1920x1080.jpg); background-size: 100%;">
+{% endblock %}
+{% block body %}
+
+    <div class ="container">
+      <p style="text-align:center">
+          <img src="{{img}}" style = "background-size:cover;background-repeat: no-repeat ;" width="600px" alt="">
+      </p>
+          <button class="btn text-align:center" style="background:aliceblue;  display: block; margin-left: auto; margin-right: auto; width: 50%;"><h3>{{eng}} - {{sp}}</h3></button>
+    </div>
+
+{% if viewed < maxs-1  %}
+    <div  style="position:absolute; top:20%; right:23%">
+        <form action="{{ url_for('to_vocab', name=name) }}" method="post">
+            <button class="btn" autofocus="true" name="next"  style="background:aliceblue;margin:20% 50px 40% 5px" value ="next"><h3>next</h3></button>
+        </form>
+    </div>
+{% endif %}
+
+{% if viewed > 0 %}
+    <div  style="position:absolute; top:20%; left:25%">
+        <form action="{{ url_for('to_vocab', name=name) }}" method="post">
+            <button class="btn" name="prev" style="background:aliceblue;margin:20% 50px 40% 5px;" value = "prev"> <h3>prev</h3></button>
+        </form>
+    </div>
+{% endif %}
+
+{% if h %}
+    <audio autoplay="autoplay" src="/static/music/{{h}}.mp3"></audio>
+{% endif %}
+
+{% endblock %}
+
+{% block footer %}
+    <div  style="position:absolute; top:17%; right:25%">
+        <h3 style="color:white; ">{{viewed+1}} in {{maxs}}</h3>
+    </div>
+    <div  style="position:absolute; top:26%; left:25%">
+        <form action="{{ url_for('to_vocab', name=name) }}" method="post">
+            <button class="btn" name="hear" style="background:aliceblue;margin:40% 50px 40% 5px" value="{{eng}}"><h3>Hear</h3></button>
+        </form>
+    </div>
+
+    <div  style="position:absolute; top:34%; right:29%">
+        <form action="{{ url_for('to_vocab', name=name) }}" method="post">
+            <button class="btn" name="add" style="background:wheat; margin:10% 10% 10% 10%" value="{{eng}}">+</button>
+        </form>
+    </div>
+{% endblock %}
